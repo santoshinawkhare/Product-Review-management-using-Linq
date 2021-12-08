@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Product_Review_management_using_Linq
 {
@@ -9,7 +10,7 @@ namespace Product_Review_management_using_Linq
         {
             Console.WriteLine("Welcome to product review management");
 
-            //UC1
+            Console.WriteLine("UC1");
             List<productReview> productReviewList = new List<productReview>()
             {
                 new productReview(){productId=1,userId=1,Rating=2,Review="Good",isLike=true},
@@ -26,11 +27,11 @@ namespace Product_Review_management_using_Linq
 
             };
 
-            /*  foreach (var list in productReviewList)
-              {
-                Console.WriteLine("ProductID:- " + list.ProducID + " " + "UserID:- " + list.userId
+            foreach (var list in productReviewList)
+            {
+                Console.WriteLine("ProductID:- " + list.productId + " " + "UserID:- " + list.userId
                  + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
-              }*/
+            }
 
             Console.WriteLine("UC2");
             Management management = new Management();
@@ -41,10 +42,31 @@ namespace Product_Review_management_using_Linq
 
             Console.WriteLine("UC4");
             management.RetrieveCountOfRecords(productReviewList);
-            Console.ReadKey();
+           /* Console.ReadKey();*/
 
             Console.WriteLine("UC5");
             management.RetrieveProductIDAndReviewFromList(productReviewList);
+
+            Console.WriteLine("UC6");
+            management.DisplayUnskippedRecords(productReviewList);
+
+            Console.WriteLine("UC7");
+            management.SelectProductIDAndReviews(productReviewList);
+
+            Console.WriteLine("UC9");
+            Console.WriteLine("\n*****************************DataTable Operations*************************");
+            productReviewDataTable reviewDataTable = new productReviewDataTable();
+            DataTable table = reviewDataTable.CreateDataBleAndAddDefaultValues();
+            reviewDataTable.DisplayDataTableRecordsWithIsLikeValueTrue(table);
+
+            Console.WriteLine("UC10");
+            reviewDataTable.FindAverageRatingOfEachProductID(table);
+
+            Console.WriteLine("UC11");
+            reviewDataTable.RetrievRecordsWhoseReviewIsNice(table);
+
+            Console.WriteLine("UC12");
+            reviewDataTable.RetrievRecordsOfPerticularUserID(table);
 
         }
     }

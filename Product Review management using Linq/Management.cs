@@ -58,8 +58,38 @@ namespace Product_Review_management_using_Linq
             Console.WriteLine("\n******************************");
         }
 
-        //UC6
+        //UC6   
+        public void DisplayUnskippedRecords(List<productReview> listproductReview)
+        {
+            var recordData = (from product in listproductReview
+                              select product).Skip(5).ToList();
 
-
+            Console.WriteLine("Follwing is the list of record after skipping first 5 records \n");
+            foreach (var list in recordData)
+            {
+                Console.WriteLine("productID:-" + list.productId + "\tproduct Review:-" + list.Review);
+            }
+            Console.WriteLine("\n******************************");
+            /*DisplayUnskippedRecords(recordData);*/
+        }
+        public void DisplayRecords(List<productReview> records)
+        {
+            foreach (var list in records)
+            {
+                Console.WriteLine("\n-------------------------");
+                Console.WriteLine("ProductID:-" + list.productId  + "UserID:-" + list.userId + "Rating:-" + list.Rating + "Review" + list.Review +  "isLike:-" + list.isLike);
+                Console.WriteLine("\n--------------------------");
+            }
+            Console.WriteLine("\n*******************************************");
+        }
+        //UC7
+        public void SelectProductIDAndReviews(List<productReview> listproductReview)
+        {
+            var recordData = listproductReview.Select(x => new { x.productId, x.Review });
+            foreach (var list in recordData)
+            {
+                Console.WriteLine(list.productId + " " + list.Review);
+            }
+        }
     }
 }

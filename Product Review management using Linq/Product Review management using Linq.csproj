@@ -6,4 +6,8 @@
     <RootNamespace>Product_Review_management_using_Linq</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NPOI" Version="2.5.5" />
+  </ItemGroup>
+
 </Project>

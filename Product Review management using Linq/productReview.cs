@@ -11,6 +11,5 @@ namespace Product_Review_management_using_Linq
         public double Rating { get; set; }
         public string Review { get; set; }
         public bool isLike { get; set; }
-        public string ProducID { get; internal set; }
     }
 }
